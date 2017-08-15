@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//这里定义后台的路由组
+Route::group(['prefix'=>'admin'], function(){
+    //定义后台首页路由
+    Route::get('index','Admin\IndexController@index');
+    //定义welcome(我的桌面)的路由
+    Route::get('welcome','Admin\IndexController@welcome');
+});
