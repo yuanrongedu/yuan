@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //这里定义后台的路由组
 Route::group(['prefix'=>'admin'], function(){
     //定义后台首页路由
@@ -22,3 +18,9 @@ Route::group(['prefix'=>'admin'], function(){
     //定义welcome(我的桌面)的路由
     Route::get('welcome','Admin\IndexController@welcome');
 });
+
+//登录页面的路由
+Route::match(['get','post'],"/admin/login", 'Admin\IndexController@login');
+//退出登录的路由
+Route::match(['get','post'],'/admin/logout', 'Admin\IndexController@logout');
+
